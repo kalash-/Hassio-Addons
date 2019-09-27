@@ -25,8 +25,9 @@ RUN apk add --no-cache \
 	python3 -m ensurepip
 
 COPY --from=BUILD /usr/local/bin/pico2wave /usr/local/bin/pico2wave
-COPY --from=BUILD /usr/local/lib/libttspico.* /usr/local/lib/
+COPY --from=BUILD /usr/local/lib/libttspico.* /usr/local/lib
 COPY --from=BUILD /usr/local/share/pico /usr/local/share/pico
+COPY --from=BUILD /usr/local/lib/python3.7/dist-packages/* /usr/local/lib/python3.7/dist-packages
 
 COPY run.sh /
 RUN chmod a+x /run.sh
